@@ -2,7 +2,7 @@ var express=require("express")
 var bp=require("body-parser")
 var f=require("express-fileupload");
 const app=express();
-const {spawn}=require("child_process")
+const {spawn}=require("child_process").spawn()
 app.use(f());
 app.use(bp.urlencoded({extended:true}))
 
