@@ -14,21 +14,22 @@ app.post("/",(req,res)=>{
     else
     {
         const text=req.files.myfile.data.toString('utf8')
-        const childpy = spawn('python',["./app.py",{env:{
-            NODE_ENV: 'production',
-            PATH: process.env.PATH
-        }},text]);
-        childpy.stdout.on("data",(data)=>{
-            console.log(`stdout: ${data}`)
-            res.send(data.toString())
-        })
-        childpy.stderr.on("data",(data)=>{
-            console.error(`stderr: ${data}`)
-        })
-        childpy.on("close",(code)=>{
-            console.log(`CHild exited with code: ${code}`)
-        })
-        // console.log(req.files.myfile.data.toString('utf8'))
+        res.send(text)
+        // const childpy = spawn('python',["./app.py",{env:{
+        //     NODE_ENV: 'production',
+        //     PATH: process.env.PATH
+        // }},text]);
+        // childpy.stdout.on("data",(data)=>{
+        //     console.log(`stdout: ${data}`)
+        //     res.send(data.toString())
+        // })
+        // childpy.stderr.on("data",(data)=>{
+        //     console.error(`stderr: ${data}`)
+        // })
+        // childpy.on("close",(code)=>{
+        //     console.log(`CHild exited with code: ${code}`)
+        // })
+        // // console.log(req.files.myfile.data.toString('utf8'))
     }
 })
 
